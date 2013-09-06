@@ -1,0 +1,13 @@
+{
+  "title": "TotalRecall",
+  "identifier": "net.vplay.builds.TotalRecall",
+  "orientation": "landscape",
+  "versioncode": 1,
+  "versionname": "1.0",
+
+  "ios": {
+    "prerendered_icon": true
+  },
+  
+  "plugins": [ "gui" ]
+}

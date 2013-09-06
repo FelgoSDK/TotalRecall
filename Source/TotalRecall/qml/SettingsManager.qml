@@ -1,0 +1,61 @@
+import VPlay 1.0
+import QtQuick 1.1
+
+Storage {
+  id: storage
+
+  property bool sound: true
+  property bool music: true
+  property bool vibrate: true
+  property bool goToSleep: false
+  property int balance: 0
+
+
+  property bool storageLoaded: false
+  property alias storage: storage
+
+  Component.onCompleted: {
+    initFirstStartValues();
+    storageLoaded = true
+  }
+
+  function initFirstStartValues() {
+    var firstStartIndicator = storage.getValue("firstStart")
+
+    if(typeof firstStartIndicator === "undefined") {
+      // first start of the app
+      storage.setValue("firstStart", true)
+      firstStartIndicator = true
+      storage.setValue("starts", 0)
+      storage.setValue("sound", true)
+      storage.setValue("music", true)
+      storage.setValue("vibrate", true)
+      storage.setValue("balance", 10000)
+      storage.setValue("gotosleep", false)
+    } else if(firstStartIndicator === true) {
+      storage.setValue("firstStart", false)
+      firstStartIndicator = false
+    }
+
+    var todayDate = Qt.formatDate(new Date(), "yyyy-MM-dd").toString()
+    console.debug("stored today:", todayDate, "stored lastStart:", storage.getValue("lastStart"))
+
+    storage.setValue("today", todayDate)
+    storage.setValue("lastStart", todayDate)
+    storage.setValue("starts", storage.getValue("starts") + 1)
+
+    sound = storage.getValue("sound")
+    music = storage.getValue("music")
+    vibrate = storage.getValue("vibrate")
+    balance = storage.getValue("balance")
+    goToSleep = storage.getValue("gotosleep")
+    if(goToSleep) {
+      // go to sleep if possible
+      nativeUtils.displaySleepEnabled = true;
+    }
+
+    if(firstStartIndicator) {
+
+    }
+  }
+}

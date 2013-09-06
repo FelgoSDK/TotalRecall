@@ -1,0 +1,28 @@
+{"frames": {
+
+"badCorn.png":
+{
+	"frame": {"x":0,"y":0,"w":65,"h":100},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":100},
+	"sourceSize": {"w":65,"h":100}
+},
+"chicken2-front.png":
+{
+	"frame": {"x":0,"y":65,"w":86,"h":98},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":86,"h":98},
+	"sourceSize": {"w":100,"h":100}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "images-hd.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":256},
+	"scale": "0.5",
+	"smartupdate": "$TexturePacker:SmartUpdate:7659aa603d00f07502db70dda328df56:1/1$"
+}
+}
