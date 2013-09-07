@@ -15,6 +15,12 @@ Item {
 
     drag.target: parent
 
+    drag.minimumX: width/2
+    drag.maximumX: level.width-width/2
+    drag.minimumY: height/2
+    drag.maximumY: level.height-height/2
+
+
     onPositionChanged: {
       playerDragger.moveNow()
     }
