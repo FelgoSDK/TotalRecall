@@ -4,6 +4,9 @@ import "scripts/Vector2d.js" as V
 EntityBase {
   id: followerEntity
 
+
+  preventFromRemovalFromEntityManager: true
+
   entityType: "player"
   entityId: "r"
 

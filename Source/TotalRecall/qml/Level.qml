@@ -9,10 +9,23 @@ Item {
     id: spriteBatchContainer
   }
 
+  function reset() {
+
+      playerDragger.x= level.width/2-playerDragger.width/2
+      playerDragger.y= 10+50
+
+      character.x= level.width/2-playerDragger.width/2
+      character.y= 10+50
+
+      playerDragger2.x= level.width/2-playerDragger.width/2
+      playerDragger2.y= level.height-10-50
+
+      character2.x= level.width/2-playerDragger.width/2
+      character2.y= level.height-10-50
+  }
+
   PlayerDragger {
     id: playerDragger
-    x: level.width/2-width/2
-    y: 10+50
     onMoveNow: character.moveNow()
     onReleasedNow: character.releasedNow()
   }
@@ -20,15 +33,11 @@ Item {
   PlayerFollower {
     id: character
     entityId: "r"
-    x: level.width/2-width/2
-    y: 10+50
     realTarget: playerDragger
   }
 
   PlayerDragger {
     id: playerDragger2
-    x: level.width/2-width/2
-    y: level.height-10-50
     onMoveNow: character2.moveNow()
     onReleasedNow: character2.releasedNow()
   }
@@ -36,8 +45,6 @@ Item {
   PlayerFollower {
     id: character2
     entityId: "g"
-    x: level.width/2-width/2
-    y: level.height-10-50
     realTarget: playerDragger2
   }
 }

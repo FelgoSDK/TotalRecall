@@ -63,7 +63,7 @@ EntityBase {
     id: convertedBar
     height: 3
     width: converted/10
-    color: pedestrian.imageParty === "r" ? "red" : "green"
+    color: pedestrian.party === "r" ? "red" : "green"
   }
 
   DebugVisual {
@@ -121,7 +121,18 @@ EntityBase {
       var collidedEntity = component.owningEntity;
       var collidedEntityType = collidedEntity.entityType;
       if(collidedEntityType === "player") {
+
+        convert.interval = 16
+
+        if(pedestrian.party !== "" && pedestrian.party !==collidedEntity.entityId) {
+          convert.interval = 32
+          converted = 0
+          convertedBar.visible = true
+          pedestrian.imageParty = ""
+        }
         convert.start()
+
+
         if(collidedEntity.entityId === "r") {
           pedestrian.party = "r"
         } else if(collidedEntity.entityId === "g") {
@@ -138,7 +149,7 @@ EntityBase {
       var collidedEntityType = collidedEntity.entityType;
       if(collidedEntityType === "player") {
         convert.stop()
-        if(converted <= 100) {
+        if(converted < 100) {
           converted = 0
           pedestrian.party = ""
         }
@@ -156,6 +167,7 @@ EntityBase {
       converted++
       if(converted >= 100) {
         convert.stop()
+        convertedBar.visible = false
         pedestrian.imageParty = pedestrian.party
       }
     }

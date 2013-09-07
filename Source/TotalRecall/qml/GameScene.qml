@@ -51,11 +51,13 @@ SceneBase {
     opacity = 1
 
     LevelLogic.init()
+    level.reset()
     audioManager.playMusic()
   }
 
   function close() {
     opacity = 0
+    entityManager.removeAllEntities()
     audioManager.stopMusic()
   }
 
