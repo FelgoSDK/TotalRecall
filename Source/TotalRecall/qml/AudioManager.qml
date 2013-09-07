@@ -5,25 +5,47 @@ Item {
   id: audioManager
 
   property string idBUTTON: "BUTTON"
+  property string idURAD: "URA_D"
+  property string idURAG: "URA_G"
+  property string idDRUG: "DRUG"
+  property string idNEVER: "NEVER"
   function play(clipID) {
     if(!settingsManager.sound)
       return
 
-    if(clipID === idBUTTON) {
-      clip.source = "audio/button.wav"
-    }
+      switch(clipID) {
+        case idBUTTON:
+          clip.source = "audio/button.wav"
+          break
+        case idURAD:
+          clip.source = "audio/ura_d.wav"
+          break
+        case idURAG:
+          clip.source = "audio/ura_g.wav"
+          break
+        case idDRUG:
+          clip.source = "audio/drug.wav"
+          break
+        case idNEVER:
+          clip.source = "audio/never.wav"
+          break
+      }
+
     clip.play()
   }
 
+  function stopMusic() {
+    music.stop()
+  }
+
+  BackgroundMusic {
+    id: music
+    source: "audio/crowd.wav"
+    volume: 0.2
+  }
 
   Sound {
     id: clip
+    volume: 1
   }
-
-  // use BackgroundMusic for long-playing background sounds
-  /*BackgroundMusic {
-    id: backgroundMusic
-    source: "snd/wind.wav"
-    volume: 0.75
-  }*/
 }

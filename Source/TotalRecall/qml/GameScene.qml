@@ -55,6 +55,7 @@ SceneBase {
     anchors.top: scene.gameWindowAnchorItem.top
     text: qsTr("Menu")+translation.language
     onClicked: {
+      audioManager.play("URA_G")
       popupLoader.activateIngameMenu()
     }
   }
@@ -63,6 +64,7 @@ SceneBase {
     opacity = 1;
 
     LevelLogic.init()
+    audioManager.play("music")
   }
 
   function backPressed() {
