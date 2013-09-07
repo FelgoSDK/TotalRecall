@@ -4,45 +4,66 @@ import VPlay 1.0
 SceneBase {
   id: scene
 
-  GUIWindow {
-    id: mainMenu
+  LevelBackground {
+      id: levelBackground
+      anchors.centerIn: scene.gameWindowAnchorItem
+      source: "img/title-hd2.png"
+  }
 
-    anchors.centerIn: parent
+//  GUIWindow {
+//    id: mainMenu
 
-    width: parent.width/3*2
-    height: parent.height/3*2
+//    anchors.centerIn: parent
 
-    Column {
-      anchors.centerIn: parent
+//    width: parent.width/3*2
+//    height: parent.height/3*2
 
-      Button {
-        text: qsTr("Play")+translation.language
-        onClicked: {
-          audioManager.play("BUTTON")
-          sceneLoader.activateGameScene()
-        }
+
+//  }
+
+  Row {
+    anchors.horizontalCenter: parent.horizontalCenter
+    y: 430
+
+    ImageButton {
+      id: play
+      onClicked: {
+        audioManager.play("BUTTON")
+        sceneLoader.activateGameScene()
       }
-      Button {
-        text: qsTr("Credits")+translation.language
-        onClicked: {
-          audioManager.play("BUTTON")
-          sceneLoader.activateCreditsScene()
-        }
+      text: ""
+      normal: "img/play-hd2.png"
+      highlight: "img/play_pressed-hd2.png"
+    }
+    ImageButton {
+      id: about
+      onClicked: {
+        audioManager.play("BUTTON")
+        sceneLoader.activateCreditsScene()
       }
-      Button {
-        text: qsTr("Options")+translation.language
-        onClicked: {
-          audioManager.play("BUTTON")
-          sceneLoader.activateOptionsScene()
-        }
+      text: ""
+//      normal: "img/about-hd2.png"
+//      highlight: "img/about_pressed-hd2.png"
+    }
+//      ImageButton {
+//        id: about
+//        text: qsTr("Options")+translation.language
+//        onClicked: {
+//          audioManager.play("BUTTON")
+//          sceneLoader.activateOptionsScene()
+//        }
+//        normal: "img/play.png"
+//        highlight: "img/play_pressed.png"
+//      }
+    ImageButton {
+      id: quit
+      onClicked: {
+        audioManager.play("BUTTON")
+        popupLoader.activateNotification("Test this notification!")
       }
-      Button {
-        text: qsTr("Notification!")+translation.language
-        onClicked: {
-          audioManager.play("BUTTON")
-          popupLoader.activateNotification("Test this notification!")
-        }
-      }
+      text: ""
+      normal: "img/quit-hd2.png"
+      highlight: "img/quit_pressed-hd2.png"
     }
   }
 

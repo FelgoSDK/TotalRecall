@@ -5,8 +5,10 @@ Item {
   width: levelBackground.width
   height: levelBackground.height
 
+  property alias source: levelBackground.source
+
   MultiResolutionImage {
     id: levelBackground
-    source: "img/bgSubmenu-hd2.png"
+    source: "img/title-hd2.png"
   }
 }

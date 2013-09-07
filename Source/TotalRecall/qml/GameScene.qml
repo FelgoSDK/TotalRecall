@@ -6,8 +6,9 @@ SceneBase {
 
   LevelBackground {
     id: levelBackground
-    x: scene.gameWindowAnchorItem.x
-    y: scene.gameWindowAnchorItem.y
+
+    anchors.centerIn: scene.gameWindowAnchorItem
+    source: "img/title-hd2.png"
   }
 
   // allows collision detection with pyhsics colliders (BoxColliders, CircleColliders and PolygonColliders)
@@ -27,6 +28,20 @@ SceneBase {
     velocityIterations: 5
     positionIterations: 5
     debugDrawVisible: true
+  }
+
+  BoxCollider {
+      width: 10
+      height: 400
+      anchors.right: scene.left
+      anchors.verticalCenter: scene.verticalCenter
+  }
+
+  BoxCollider {
+      width: 10
+      height: 400
+      anchors.left: scene.right
+      anchors.verticalCenter: scene.verticalCenter
   }
 
   Level {
