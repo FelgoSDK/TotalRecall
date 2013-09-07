@@ -15,9 +15,21 @@ EntityBase {
 //    moveToY.start()
   }
 
-  onPosChanged: {
-//      if(pos.x <= (sprite.width / 2) || pos.x >= (level.))
+  onXChanged: {
+      if(x <= (sprite.width / 2) || pos.x >= (320 - (sprite.width / 2))) {
+          velocityX = -velocityX
+          velocityY = -velocityY
+      }
   }
+
+  onYChanged: {
+      if(pos.y <= (sprite.height / 2) || pos.y >= (480 - (sprite.height / 2))) {
+          velocityX = -velocityX
+          velocityY = -velocityY
+      }
+  }
+
+
 
   function generateRandomValueBetween(minimum, maximum) {
       return Math.random()*(maximum-minimum) + minimum
