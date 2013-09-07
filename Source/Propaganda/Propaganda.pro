@@ -67,7 +67,7 @@ symbian {
 # Following configs are needed for Mac App Store publishing
 macx {
     COMPANY = "V-Play GmbH"
-    BUNDLEID = net.vplay.demos.mac.TotalRecall
+    BUNDLEID = net.vplay.demos.mac.Propaganda
     ICON = macx/app_icon.icns
     QMAKE_INFO_PLIST = macx/game-Info.plist
     ENTITLEMENTS = macx/game.entitlements
