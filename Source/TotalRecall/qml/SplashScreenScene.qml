@@ -12,7 +12,7 @@ SceneBase {
     Text {
       id: seText
       anchors.centerIn: parent
-      text: qsTr("Pray and Play")+translation.language
+      text: qsTr("Propaganda")+translation.language
       color: "white"
       font.pointSize: 20
     }
@@ -20,7 +20,7 @@ SceneBase {
     Text {
       anchors.top: seText.bottom
       anchors.horizontalCenter: seText.horizontalCenter
-      text: qsTr("-- Total Recall --")+translation.language
+      text: qsTr("-- Total Recall AEC --")+translation.language
       color: "white"
     }
     NumberAnimation on opacity {
@@ -41,7 +41,7 @@ SceneBase {
     id: changeToNextSceneTimer
     interval: 5000
     onTriggered: {
-      sceneLoader.activateIntroScene()
+      sceneLoader.activateMainMenuScene()
     }
   }
 
@@ -64,7 +64,7 @@ SceneBase {
     onPressAndHold: {
       changeToNextSceneTimer.stop()
       fadeOutTimer.stop()
-      sceneLoader.activateIntroScene()
+      sceneLoader.activateMainMenuScene()
     }
   }
 }

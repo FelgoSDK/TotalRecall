@@ -29,7 +29,7 @@ SceneBase {
       }
 
       MenuText {
-        text: qsTr("Team :\nPeter \nPeter")+translation.language
+        text: qsTr("Team :\nPeter Kainrad \nPeter Krenn")+translation.language
       }
     }
 

@@ -8,7 +8,7 @@ SceneBase {
     id: levelBackground
 
     anchors.centerIn: scene.gameWindowAnchorItem
-    source: "img/title-hd2.png"
+    source: "img/bg_ingame-hd2.png"
   }
 
   // allows collision detection with pyhsics colliders (BoxColliders, CircleColliders and PolygonColliders)
@@ -30,19 +30,7 @@ SceneBase {
     debugDrawVisible: true
   }
 
-  BoxCollider {
-      width: 10
-      height: 400
-      anchors.right: scene.left
-      anchors.verticalCenter: scene.verticalCenter
-  }
-
-  BoxCollider {
-      width: 10
-      height: 400
-      anchors.left: scene.right
-      anchors.verticalCenter: scene.verticalCenter
-  }
+  entityContainerOfScene: level
 
   Level {
     id: level

@@ -15,7 +15,7 @@ Scene {
   property variant entityContainerOfScene: sceneBase
 
   // required for LevelEditor, so the entities can be created by entityType by the entity manager
-  property variant dynamicCreationEntityList: []
+  //property variant dynamicCreationEntityList: []
 
   // Dummy controller has not usage but it is needed so no errors occur on scenes where no controller was set.
   Item {

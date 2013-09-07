@@ -4,8 +4,8 @@ import VPlay 1.0
 Loader {
   id: sceneLoader
 
-  property string currentScene: gameScene//splashScene
-  property string nextScene: ""
+  property string currentScene : gameScene//mainMenuScene
+  property string nextScene: splashScene
 
   property string splashScene: "SplashScreenScene.qml"
   property string introScene: "IntroScene.qml"
@@ -14,12 +14,15 @@ Loader {
   property string optionScene: "OptionsScene.qml"
   property string gameScene: "GameScene.qml"
 
-  source: currentScene
+  source: currentScene ? currentScene : splashScene
 
   onSourceChanged: {
     if(item) {
-      item.open()
       activeScene = item
+
+      // forward container allways to container of scene
+      entityManager.entityContainer = item.entityContainerOfScene
+      item.open()
     }
 
     loadItemWithCocos(sceneLoader)

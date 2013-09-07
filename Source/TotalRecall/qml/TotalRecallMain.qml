@@ -47,8 +47,8 @@ GameWindow {
   EntityManager {
     id: entityManager
     // forward container allways to container of scene
-    entityContainer: sceneLoader.item.entityContainerOfScene
+    //entityContainer: sceneLoader.item.entityContainerOfScene
 
-    dynamicCreationEntityList: sceneLoader.item.dynamicCreationEntityList
+    //dynamicCreationEntityList: sceneLoader.item.dynamicCreationEntityList
   }
 }

@@ -1,23 +1,13 @@
-    import VPlay 1.0
+import VPlay 1.0
 import QtQuick 1.1
 import "entities"
 
 Item {
   id: level
 
-  SpriteBatchContainer {
-    id: spriteBatchContainer
-  }
-
-  BorderElement {
-    width: parent.width
-    height: 10
-  }
-  BorderElement {
-    y: parent.height-height
-    width: parent.width
-    height: 10
-  }
+//  SpriteBatchContainer {
+//    id: spriteBatchContainer
+//  }
 
   PlayerDragger {
     id: playerDragger
@@ -29,7 +19,7 @@ Item {
 
   PlayerFollower {
     id: character
-    entityId: "player1"
+    entityId: "r"
     x: level.width/2-width/2
     y: 10+50
     realTarget: playerDragger
@@ -45,10 +35,9 @@ Item {
 
   PlayerFollower {
     id: character2
-    entityId: "player2"
+    entityId: "g"
     x: level.width/2-width/2
     y: level.height-10-50
     realTarget: playerDragger2
   }
-
 }

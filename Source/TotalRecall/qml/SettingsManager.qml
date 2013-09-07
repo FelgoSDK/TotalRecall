@@ -11,6 +11,11 @@ Storage {
   property int balance: 0
   property bool debugVisualsEnabled: false
 
+  property int borderRegionColliderGroup: Box.Category1
+  property int pedestrianGroup: Box.Category2
+  property int playerColliderGroup: Box.Category3
+  property int obstacleColliderGroup: Box.Category4
+
   onSoundChanged: {
     storage.setValue("sound", sound)
   }
