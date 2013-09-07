@@ -1,0 +1,13 @@
+Store 1.0 Store.qml
+
+Currency 1.0 Currency.qml
+CurrencyPack 1.0 CurrencyPack.qml
+
+StorePurchase 1.0 StorePurchase.qml
+VirtualPurchase 1.0 VirtualPurchase.qml
+
+LifetimeGood 1.0 LifetimeGood.qml
+SingleUseGood 1.0 SingleUseGood.qml
+SingleUsePackGood 1.0 SingleUsePackGood.qml
+
+NonConsumableGood 1.0 NonConsumableGood.qml

@@ -1,0 +1,9 @@
+SwitchStyle 1.0 SwitchStyle.qml
+SliderStyle 1.0 SliderStyle.qml
+TextDialogStyle 1.0 TextDialogStyle.qml
+GUIWindowStyle 1.0 GUIWindowStyle.qml
+PointSelectorStyle 1.0 PointSelectorStyle.qml
+ColorPickerStyle 1.0 ColorPickerStyle.qml
+ImageViewerStyle 1.0 ImageViewerStyle.qml
+ButtonStyle 1.0 ButtonStyle.qml
+Style 1.0 Style.qml
