@@ -19,4 +19,11 @@ Item {
   Sound {
     id: clip
   }
+
+  // use BackgroundMusic for long-playing background sounds
+  /*BackgroundMusic {
+    id: backgroundMusic
+    source: "snd/wind.wav"
+    volume: 0.75
+  }*/
 }

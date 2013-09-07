@@ -9,7 +9,31 @@ Storage {
   property bool vibrate: true
   property bool goToSleep: false
   property int balance: 0
+  property bool debugVisualsEnabled: false
 
+  onSoundChanged: {
+    storage.setValue("sound", sound)
+  }
+
+  onMusicChanged: {
+    storage.setValue("music", music)
+  }
+
+  onVibrateChanged: {
+    storage.setValue("vibrate", vibrate)
+  }
+
+  onGoToSleepChanged: {
+    storage.setValue("goToSleep", goToSleep)
+  }
+
+  onBalanceChanged: {
+    storage.setValue("balance", balance)
+  }
+
+  onDebugVisualsEnabledChanged: {
+    storage.setValue("debugVisualsEnabled", debugVisualsEnabled)
+  }
 
   property bool storageLoaded: false
   property alias storage: storage
@@ -32,6 +56,7 @@ Storage {
       storage.setValue("vibrate", true)
       storage.setValue("balance", 10000)
       storage.setValue("gotosleep", false)
+      storage.setValue("debugVisualsEnabled", false)
     } else if(firstStartIndicator === true) {
       storage.setValue("firstStart", false)
       firstStartIndicator = false
@@ -49,6 +74,7 @@ Storage {
     vibrate = storage.getValue("vibrate")
     balance = storage.getValue("balance")
     goToSleep = storage.getValue("gotosleep")
+    debugVisualsEnabled = storage.getValue("debugVisualsEnabled")
     if(goToSleep) {
       // go to sleep if possible
       nativeUtils.displaySleepEnabled = true;

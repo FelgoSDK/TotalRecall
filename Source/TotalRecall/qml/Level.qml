@@ -4,29 +4,26 @@ import QtQuick 1.1
 Item {
   id: level
 
-  Rectangle {
-    anchors.fill: parent
-    opacity: 0.5
+  SpriteBatchContainer {
+    id: spriteBatchContainer
   }
 
-  //  SpriteBatchContainer {
-  //    id: spriteBatchContainer
-  //  }
-
-  SingleSpriteFromFile {
-    id:testObject
-    translateToCenterAnchor: false
-    anchors.centerIn: parent
-
-    filename: "img/Images-hd2.json"
-    source: "badCorn.png"
+//  Player {
+//    x: 130
+//    y: 200
+//  }
+  PlayerDragger {
+    id: playerDragger
+    width: 50
+    height: 50
+    x: 130
+    y: 200
   }
 
-  SingleSpriteFromFile {
-    id:testObject2
-    translateToCenterAnchor: false
-
-    filename: "img/Images-hd2.json"
-    source: "chicken2-front.png"
+  PlayerFollower {
+    id: character
+    realTarget: playerDragger
+    x: 130
+    y: 100
   }
 }

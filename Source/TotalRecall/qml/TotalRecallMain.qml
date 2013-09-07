@@ -20,6 +20,12 @@ GameWindow {
   property alias sceneLoader: sceneLoader
   property alias popupLoader: popupLoader
 
+  // Custom font loading of ttf fonts
+  /*FontLoader {
+    id: fontHUD
+    source: "fonts/munro.ttf"
+  }*/
+
   AudioManager {
     id: audioManager
   }
