@@ -76,6 +76,16 @@ SceneBase {
     }
   }
 
+  function open() {
+    opacity = 1
+    audioManager.playMusic(true)
+  }
+
+  function close() {
+    opacity = 0
+    audioManager.stopMusic()
+  }
+
   onBackPressed: {
     audioManager.play("BUTTON")
     nativeUtils.displayMessageBox(qsTr("Really quit the game?")+translation.language, "", 2);

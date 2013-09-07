@@ -34,14 +34,25 @@ Item {
     clip.play()
   }
 
+  function playMusic(title) {
+    if(title) {
+      music.source = "audio/title_music.mp3"
+      music.volume = 1
+    }
+    else {
+      music.source = "audio/crowd.mp3"
+      music.volume = 0.2
+    }
+
+    music.play()
+  }
+
   function stopMusic() {
     music.stop()
   }
 
   BackgroundMusic {
     id: music
-    source: "audio/crowd.wav"
-    volume: 0.2
   }
 
   Sound {
