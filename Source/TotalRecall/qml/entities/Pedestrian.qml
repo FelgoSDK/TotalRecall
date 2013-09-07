@@ -30,6 +30,7 @@ EntityBase {
   CircleCollider {
     id: collider
     radius: sprite.width /2
+    sensor: true
   }
   DebugVisual {
     x: -sprite.width/2
@@ -55,19 +56,19 @@ EntityBase {
 //    maxPropertyValueDifference: moveToPointHelper.absoluteRotationDifference
   }
 
-  MovementAnimation {
-    id: moveToY
-    target: pedestrian
-    property: "y"
+//  MovementAnimation {
+//    id: moveToY
+//    target: pedestrian
+//    property: "y"
 
-    // outputXAxis is +1 if target is to the right, -1 when to the left and 0 when aiming towards it
-    velocity: pedestrian.velocityY
-    // alternatively, also the acceleration could be set, depends on how you want the followerEntity to behave
+//    // outputXAxis is +1 if target is to the right, -1 when to the left and 0 when aiming towards it
+//    velocity: pedestrian.velocityY
+//    // alternatively, also the acceleration could be set, depends on how you want the followerEntity to behave
 
-//    // start rotating towards the target immediately
-//    running: moveToPointHelper.outputXAxis
+////    // start rotating towards the target immediately
+////    running: moveToPointHelper.outputXAxis
 
-//    // this avoids over-rotating, so rotating further than allowed
-//    maxPropertyValueDifference: moveToPointHelper.absoluteRotationDifference
-  }
+////    // this avoids over-rotating, so rotating further than allowed
+////    maxPropertyValueDifference: moveToPointHelper.absoluteRotationDifference
+//  }
 }
