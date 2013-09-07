@@ -5,6 +5,7 @@ Item {
   id: playerDragger
 
   signal moveNow
+  signal releasedNow
 
   MultiTouchArea {
     id: touchArea
@@ -16,6 +17,9 @@ Item {
 
     onPositionChanged: {
       playerDragger.moveNow()
+    }
+    onReleased: {
+      playerDragger.releasedNow()
     }
   }
 

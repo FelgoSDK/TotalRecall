@@ -1,6 +1,6 @@
 import VPlay 1.0
 import QtQuick 1.1
-
+import "scripts/Vector2d.js" as V
 EntityBase {
   id: followerEntity
 
@@ -20,10 +20,41 @@ EntityBase {
   }
 
   function moveNow() {
-    followerEntity.moveit = false
+    //followerEntity.moveit = false
+    calPos()
   }
 
-  MoveToPointHelper {
+  function releasedNow() {
+     finishTimer.start()
+  }
+
+  function calPos() {
+    var posFinger = new V.Vector2d(realTarget.x,realTarget.y)
+    var posPlayer = new V.Vector2d(followerEntity.x,followerEntity.y)
+    var dir = posFinger.subtract(posPlayer)
+    dir = dir.normalize()
+    var velocity = 0.2
+    dir = dir.multiply(velocity)
+    followerEntity.x += dir.x
+    followerEntity.y +=dir.y
+    if(!finishTimer.running)
+      return
+
+    if(Math.abs(followerEntity.x-posFinger.x) < 5 && Math.abs(followerEntity.y - posFinger.y) < 5) {
+      finishTimer.stop()
+    }
+  }
+
+  Timer {
+    id: finishTimer
+    repeat: true
+    interval: 16
+    onTriggered: {
+      calPos()
+    }
+  }
+
+  /*MoveToPointHelper {
     id: moveToPointHelper
     // the entity to move towards
     targetObject: realTarget
@@ -56,7 +87,7 @@ EntityBase {
       }
     }
   }
-
+*/
   BoxCollider {
     id: collider
     width: sprite.width
@@ -64,13 +95,12 @@ EntityBase {
     x: sprite.x
     y: sprite.y
 
-    sensor: true
+    collisionTestingOnlyMode: true
 
-    active: true
     //bodyType: Body.Dynamic
 
     // move forwards and backwards, with a multiplication factor for the desired speed
-    force: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*4, moveToPointHelper.outputXAxis*4)
+    //force: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*4, moveToPointHelper.outputXAxis*4)
     //linearVelocity: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*100, moveToPointHelper.outputXAxis*100)
     // rotate left and right
     //torque:  moveToPointHelper.outputXAxis*0.1
