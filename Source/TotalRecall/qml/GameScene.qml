@@ -4,13 +4,11 @@ import QtQuick 1.1
 SceneBase {
   id: scene
 
-//  LevelBackground {
-//    id: levelBackground
-//    x: scene.gameWindowAnchorItem.x
-//    y: scene.gameWindowAnchorItem.y
-//  }
-
-
+  LevelBackground {
+    id: levelBackground
+    x: scene.gameWindowAnchorItem.x
+    y: scene.gameWindowAnchorItem.y
+  }
 
   // allows collision detection with pyhsics colliders (BoxColliders, CircleColliders and PolygonColliders)
   // it supports 2 modes:

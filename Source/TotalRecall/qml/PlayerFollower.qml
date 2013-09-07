@@ -79,22 +79,17 @@ EntityBase {
 
 
 */
-  Timer {
-    interval: 16
-    triggered: {
-      realTarget
-    }
-  }
+
 
   BoxCollider {
     width: parent.width
     height: parent.height
 
     // move forwards and backwards, with a multiplication factor for the desired speed
-    force: Qt.point(moveToPointHelper.outputXAxis, moveToPointHelper.outputYAxis)
-    onForceChanged: console.debug(-onForceChanged.x,-onForceChanged.y)
+    //force: Qt.point(moveToPointHelper.outputXAxis, moveToPointHelper.outputYAxis)
+    //onForceChanged: console.debug(-onForceChanged.x,-onForceChanged.y)
     // rotate left and right
-    torque: moveToPointHelper.outputXAxis
+    //torque: moveToPointHelper.outputXAxis
 
     DebugVisual {
       color: "red"

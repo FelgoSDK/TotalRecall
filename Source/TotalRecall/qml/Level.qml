@@ -8,22 +8,8 @@ Item {
     id: spriteBatchContainer
   }
 
-//  Player {
-//    x: 130
-//    y: 200
-//  }
-  PlayerDragger {
-    id: playerDragger
-    width: 50
-    height: 50
+  Player {
     x: 130
     y: 200
-  }
-
-  PlayerFollower {
-    id: character
-    realTarget: playerDragger
-    x: 130
-    y: 100
   }
 }
