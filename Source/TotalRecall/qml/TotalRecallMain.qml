@@ -4,8 +4,8 @@ import VPlay 1.0
 GameWindow {
   id: window
 
-  width: 480*2
-  height: 320*2
+  width: 320*2
+  height: 480*2
 
   minimizeable: true
   maximizeable: true
