@@ -1,5 +1,6 @@
 import VPlay 1.0
 import QtQuick 1.1
+import ".."
 
 EntityBase {
   id: pedestrian
@@ -10,12 +11,13 @@ EntityBase {
   width: sprite.width
   height: sprite.height
 
+  scale: 0.2
 
   SingleSpriteFromFile {
     id:sprite
     translateToCenterAnchor: false
 
-    filename: "img/Images-hd2.json"
+    filename: "../img/Images-hd2.json"
     source: pedSource
   }
 
@@ -25,7 +27,7 @@ EntityBase {
     height: parent.height
 
     DebugVisual {
-      color: "red"
+      color: "yellow"
     }
   }
 }

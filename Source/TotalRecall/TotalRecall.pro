@@ -1,5 +1,5 @@
 # V-Play project
-CONFIG += v-play
+CONFIG += v-play_daily
 
 # temp until next daily build
 QT+=network

@@ -1,6 +1,6 @@
 import VPlay 1.0
 import QtQuick 1.1
-
+import "scripts/levelLogic.js" as LevelLogic
 SceneBase {
   id: scene
 
@@ -50,6 +50,12 @@ SceneBase {
     onClicked: {
       popupLoader.activateIngameMenu()
     }
+  }
+
+  function open() {
+    opacity = 1;
+
+    LevelLogic.init()
   }
 
   function backPressed() {
