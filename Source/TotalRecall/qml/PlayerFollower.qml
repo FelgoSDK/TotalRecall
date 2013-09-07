@@ -21,11 +21,13 @@ EntityBase {
 
   function moveNow() {
     //followerEntity.moveit = false
-    calPos()
+    if(!finishTimer.running)
+      finishTimer.start()
   }
 
   function releasedNow() {
-     finishTimer.start()
+    if(!finishTimer.running)
+      finishTimer.start()
   }
 
   function calPos() {
@@ -33,14 +35,14 @@ EntityBase {
     var posPlayer = new V.Vector2d(followerEntity.x,followerEntity.y)
     var dir = posFinger.subtract(posPlayer)
     dir = dir.normalize()
-    var velocity = 0.2
+    var velocity = 2.7
     dir = dir.multiply(velocity)
     followerEntity.x += dir.x
     followerEntity.y +=dir.y
     if(!finishTimer.running)
       return
 
-    if(Math.abs(followerEntity.x-posFinger.x) < 5 && Math.abs(followerEntity.y - posFinger.y) < 5) {
+    if(Math.abs(followerEntity.x-posFinger.x) < 2 && Math.abs(followerEntity.y - posFinger.y) < 2) {
       finishTimer.stop()
     }
   }
@@ -96,22 +98,31 @@ EntityBase {
     y: sprite.y
 
     collisionTestingOnlyMode: true
+    sensor: true
+    categories: level.playerColliderGroup
 
-    //bodyType: Body.Dynamic
-
-    // move forwards and backwards, with a multiplication factor for the desired speed
-    //force: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*4, moveToPointHelper.outputXAxis*4)
-    //linearVelocity: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*100, moveToPointHelper.outputXAxis*100)
-    // rotate left and right
-    //torque:  moveToPointHelper.outputXAxis*0.1
-    //angularVelocity: 30
-    //sleepingAllowed: true
     fixedRotation: true
 
-    // NOTE: you MUST set a density if you want to apply a torque!
-    density: 0.5
-    friction: 0.9
-    linearDamping: 0.9
+    fixture.onBeginContact: {
+//          var fixture = other;
+//          var body = fixture.parent;
+//          var component = body.parent;
+//          var collidedEntity = component.owningEntity;
+//          var collidedEntityType = collidedEntity.entityType;
+//          if(collidedEntityType === "obstacle") {
+//            hitSound.play()
+
+//            // the obstacle is pooled for better performance
+//            collidedEntity.removeEntity();
+
+//            lives--
+
+//            collision()
+
+//            if(lives <= 0)
+//              died()
+//          }
+        }
   }
   DebugVisual {
     x: -sprite.width/2

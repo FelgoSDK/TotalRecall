@@ -22,7 +22,7 @@ Item {
   PlayerDragger {
     id: playerDragger
     x: level.width/2-width/2
-    y: 10+height/2
+    y: 10+50
     onMoveNow: character.moveNow()
     onReleasedNow: character.releasedNow()
   }
@@ -31,14 +31,14 @@ Item {
     id: character
     entityId: "player1"
     x: level.width/2-width/2
-    y: 10+height/2
+    y: 10+50
     realTarget: playerDragger
   }
 
   PlayerDragger {
     id: playerDragger2
     x: level.width/2-width/2
-    y: level.height-10-height/2
+    y: level.height-10-50
     onMoveNow: character2.moveNow()
     onReleasedNow: character2.releasedNow()
   }
@@ -47,7 +47,7 @@ Item {
     id: character2
     entityId: "player2"
     x: level.width/2-width/2
-    y: level.height-10-height/2
+    y: level.height-10-50
     realTarget: playerDragger2
   }
 
