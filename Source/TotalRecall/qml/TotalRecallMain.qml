@@ -3,9 +3,8 @@ import VPlay 1.0
 
 GameWindow {
   id: window
-
-  width: 320*2
-  height: 480*2
+  width: 320
+  height: 480
 
   minimizeable: true
   maximizeable: true
@@ -19,6 +18,7 @@ GameWindow {
   property alias settingsManager: settingsManager
   property alias sceneLoader: sceneLoader
   property alias popupLoader: popupLoader
+  property alias window: window
 
   // Custom font loading of ttf fonts
   /*FontLoader {
