@@ -10,16 +10,12 @@ Item {
 
   PlayerDragger {
     id: playerDragger
-    width: parent.width
-    height: parent.width
   }
 
   PlayerFollower {
     id: character
+    x: parent.x
+    y: parent.y
     realTarget: playerDragger
-  }
-
-  DebugVisual {
-    color: "orange"
   }
 }

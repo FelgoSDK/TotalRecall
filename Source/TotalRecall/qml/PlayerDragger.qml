@@ -4,21 +4,25 @@ import QtQuick 1.1
 Item {
   id: playerDragger
 
-  width: 50
-  height: 50
+  signal moveNow
 
   MultiTouchArea {
-    width: parent.width
-    height: parent.height
+    id: touchArea
+    width: 50
+    height: 50
+    anchors.centerIn: parent
 
     drag.target: parent
 
     onPositionChanged: {
-      parent.parent.moveNow()
+      playerDragger.moveNow()
     }
   }
 
   DebugVisual {
+    width: touchArea.width
+    height: touchArea.height
+    anchors.centerIn: parent
     color: "red"
   }
 }

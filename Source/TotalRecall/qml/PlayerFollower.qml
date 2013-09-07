@@ -4,21 +4,24 @@ import QtQuick 1.1
 EntityBase {
   id: followerEntity
 
+  entityType: "player"
+
   property variant realTarget
   property string playerSource: "chicken2-front.png"
 
-  property bool followerEntity: false
+  property bool moveit: false
 
   SingleSpriteFromFile {
     id:sprite
-    translateToCenterAnchor: false
+    translateToCenterAnchor: true
 
     filename: "img/Images-hd2.json"
     source: playerSource
   }
 
   function moveNow() {
-    followerEntity = true
+    console.debug("===========",followerEntity.moveit)
+    followerEntity.moveit = false
   }
 
   MoveToPointHelper {
@@ -48,7 +51,7 @@ EntityBase {
 
     onTargetReached: {
       // make it stop faster
-      followerEntity.targetReached = true
+      followerEntity.moveit = true
       collider.linearVelocity = Qt.point(0, 0)
     }
 
@@ -73,33 +76,39 @@ EntityBase {
 
   BoxCollider {
     id: collider
-    width: parent.width
-    height: parent.height
+    width: sprite.width
+    height: sprite.height
+    x: sprite.x
+    y: sprite.y
+
 
     //sensor: true
 
-    active: true
-    bodyType: Body.Dynamic
+    //active: true
+    //bodyType: Body.Dynamic
 
     // also possible would be to set the velocity instead of the force, but not such a smooth movement
     //velocity: 300*moveToPointHelper.outputXAxis
 
     // move forwards and backwards, with a multiplication factor for the desired speed
-    //force: realTarget.targetReached ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*4, moveToPointHelper.outputXAxis*4)
-    linearVelocity: realTarget.targetReached ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*100, moveToPointHelper.outputXAxis*100)
+    //force: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*4, moveToPointHelper.outputXAxis*4)
+    linearVelocity: followerEntity.moveit ? Qt.point(0, 0) : Qt.point(moveToPointHelper.outputYAxis*100, moveToPointHelper.outputXAxis*100)
     // rotate left and right
     //torque:  moveToPointHelper.outputXAxis*0.1
     //angularVelocity: 30
-    sleepingAllowed: true
-    fixedRotation: true
+    //sleepingAllowed: true
+    //fixedRotation: true
 
     // NOTE: you MUST set a density if you want to apply a torque!
     density: 0.5
     friction: 0.9
-    linearDamping: 0.9
-
-    DebugVisual {
-      color: "red"
-    }
+    linearDamping: 1
+  }
+  DebugVisual {
+    x: -sprite.width/2
+    y: -sprite.height/2
+    width: sprite.width
+    height: sprite.height
+    color: "blue"
   }
 }
