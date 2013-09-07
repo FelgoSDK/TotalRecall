@@ -4,7 +4,7 @@ import VPlay 1.0
 Loader {
   id: sceneLoader
 
-  property string currentScene : gameScene//mainMenuScene
+  property string currentScene //: gameScene//mainMenuScene
   property string nextScene: splashScene
 
   property string splashScene: "SplashScreenScene.qml"

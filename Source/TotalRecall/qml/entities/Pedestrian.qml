@@ -11,8 +11,9 @@ EntityBase {
 
   property int frameRate: 7
   property int velocityX: generateRandomValueBetween(-10, 10)
-  property int convertedRed: 0
-  property int convertedBlue: 0
+  property int converted: 0
+  property string party: ""
+  property string imageParty: ""
 
   onVelocityXChanged: {
     if(velocityX == 0 ) {
@@ -50,8 +51,8 @@ EntityBase {
   }
 
   function updateDir() {
-    var dir = new V.Vector2d(velocityX,velocityY)
-    dir = dir.normalize()
+    //var dir = new V.Vector2d(velocityX,velocityY)
+    //dir = dir.normalize()
   }
 
   function generateRandomValueBetween(minimum, maximum) {
@@ -61,8 +62,16 @@ EntityBase {
   Rectangle {
     id: convertedBar
     height: 3
-    width: convertedRed/10
-    color: "red"
+    width: converted/10
+    color: pedestrian.imageParty === "r" ? "red" : "green"
+  }
+
+  DebugVisual {
+    x: -sprite.width/2
+    y: -sprite.height/2
+    width: sprite.width
+    height: sprite.height
+    color: "blue"
   }
 
   SpriteSequenceFromFile {
@@ -77,9 +86,9 @@ EntityBase {
     Sprite {
       name: "idle"
       frameNames: [
-        "p1.png",
-        "p2.png",
-        "p3.png"
+        ((pedestrian.imageParty === "") ? "p" : (pedestrian.imageParty+"c"))+"1.png",
+        ((pedestrian.imageParty === "") ? "p" : (pedestrian.imageParty+"c"))+"2.png",
+        ((pedestrian.imageParty === "") ? "p" : (pedestrian.imageParty+"c"))+"3.png"
       ]
       frameRate: pedestrian.frameRate
       loop: true
@@ -87,8 +96,8 @@ EntityBase {
     Sprite {
       name: "run"
       frameNames: [
-        "p2.png",
-        "p3.png"
+        ((pedestrian.imageParty === "") ? "p" : (pedestrian.imageParty+"c"))+"2.png",
+        ((pedestrian.imageParty === "") ? "p" : (pedestrian.imageParty+"c"))+"3.png"
       ]
       frameRate: pedestrian.frameRate
       loop: true
@@ -112,7 +121,12 @@ EntityBase {
       var collidedEntity = component.owningEntity;
       var collidedEntityType = collidedEntity.entityType;
       if(collidedEntityType === "player") {
-        convertRed.start()
+        convert.start()
+        if(collidedEntity.entityId === "r") {
+          pedestrian.party = "r"
+        } else if(collidedEntity.entityId === "g") {
+          pedestrian.party = "g"
+        }
       }
     }
 
@@ -123,32 +137,28 @@ EntityBase {
       var collidedEntity = component.owningEntity;
       var collidedEntityType = collidedEntity.entityType;
       if(collidedEntityType === "player") {
-        convertRed.stop()
-        if(convertedRed <= 100) {
-          convertedRed = 0
+        convert.stop()
+        if(converted <= 100) {
+          converted = 0
+          pedestrian.party = ""
         }
+
+
       }
     }
   }
 
   Timer {
-    id: convertRed
+    id: convert
     repeat: true
     interval: 16
     onTriggered: {
-      convertedRed++
-      if(convertedRed == 100) {
-        convertRed.stop()
+      converted++
+      if(converted >= 100) {
+        convert.stop()
+        pedestrian.imageParty = pedestrian.party
       }
     }
-  }
-
-  DebugVisual {
-    x: -sprite.width/2
-    y: -sprite.height/2
-    width: sprite.width
-    height: sprite.height
-    color: "blue"
   }
 
   MovementAnimation {
@@ -158,19 +168,5 @@ EntityBase {
 
     // outputXAxis is +1 if target is to the right, -1 when to the left and 0 when aiming towards it
     velocity: Qt.point(pedestrian.velocityX, pedestrian.velocityY)
-  }
-
-  MovementAnimation {
-    id: rotationMovement
-    target: followerEntity
-    property: "rotation"
-
-    // outputXAxis is +1 if target is to the right, -1 when to the left and 0 when aiming towards it
-    velocity: 300*direction
-    // alternatively, also the acceleration could be set, depends on how you want the followerEntity to behave
-
-
-    // this avoids over-rotating, so rotating further than allowed
-    maxPropertyValueDifference: moveToPointHelper.absoluteRotationDifference
   }
 }

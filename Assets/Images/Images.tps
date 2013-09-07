@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>vplay</string>
         <key>textureFileName</key>
-        <filename>../../Source/TotalRecall/qml/img/images-sd.png</filename>
+        <filename>../../Source/TotalRecall/qml/img/images-hd2.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../Source/TotalRecall/qml/img/images-sd.json</filename>
+        <filename>../../Source/TotalRecall/qml/img/images-hd2.json</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -132,7 +132,7 @@
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
-            <double>0.25</double>
+            <double>1</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>innerPadding</key>
@@ -157,6 +157,12 @@
             <filename>r1.png</filename>
             <filename>r2.png</filename>
             <filename>r3.png</filename>
+            <filename>gc1.png</filename>
+            <filename>gc2.png</filename>
+            <filename>gc3.png</filename>
+            <filename>rc3.png</filename>
+            <filename>rc1.png</filename>
+            <filename>rc2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

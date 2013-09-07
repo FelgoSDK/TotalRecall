@@ -5,9 +5,9 @@ import "entities"
 Item {
   id: level
 
-//  SpriteBatchContainer {
-//    id: spriteBatchContainer
-//  }
+  SpriteBatchContainer {
+    id: spriteBatchContainer
+  }
 
   PlayerDragger {
     id: playerDragger
