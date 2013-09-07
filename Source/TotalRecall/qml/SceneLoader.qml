@@ -1,22 +1,45 @@
 import QtQuick 1.1
 import VPlay 1.0
 
-Loader {
+//Loader {
+Item {
   id: sceneLoader
 
-  property string currentScene //: gameScene//mainMenuScene
-  property string nextScene: splashScene
+  property variant currentScene //: gameScene//mainMenuScene
+  property variant nextScene: splashScene
 
-  property string splashScene: "SplashScreenScene.qml"
+  SplashScreenScene {
+    id:splashScene
+  }
+
+  IntroScene {
+    id:introScene
+  }
+  MainMenuScene {
+    id:mainMenuScene
+  }
+  CreditsScene {
+    id:creditsScene
+  }
+  OptionsScene {
+    id:optionScene
+  }
+  GameScene {
+    id:gameScene
+  }
+
+  /*property string splashScene: "SplashScreenScene.qml"
   property string introScene: "IntroScene.qml"
   property string mainMenuScene: "MainMenuScene.qml"
   property string creditsScene: "CreditsScene.qml"
   property string optionScene: "OptionsScene.qml"
-  property string gameScene: "GameScene.qml"
+  property string gameScene: "GameScene.qml"*/
 
-  source: currentScene ? currentScene : splashScene
-
+  property variant source: currentScene ? currentScene : splashScene
+  property variant item
   onSourceChanged: {
+    item = source
+
     if(item) {
       activeScene = item
 
@@ -25,7 +48,7 @@ Loader {
       item.open()
     }
 
-    loadItemWithCocos(sceneLoader)
+    //loadItemWithCocos(sceneLoader)
     //console.debug("[SceneLoader] Change Scene to ", utils.cropPath(source, true))
   }
 
