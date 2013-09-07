@@ -42,8 +42,8 @@ SceneBase {
         sceneLoader.activateCreditsScene()
       }
       text: ""
-//      normal: "img/about-hd2.png"
-//      highlight: "img/about_pressed-hd2.png"
+      normal: "img/about-hd2.png"
+      highlight: "img/about_pressed-hd2.png"
     }
 //      ImageButton {
 //        id: about

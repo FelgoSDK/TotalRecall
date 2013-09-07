@@ -15,7 +15,7 @@ EntityBase {
     id:sprite
     translateToCenterAnchor: true
 
-    filename: "img/Images-hd2.json"
+    filename: "img/images-hd2.json"
     source: playerSource
   }
 

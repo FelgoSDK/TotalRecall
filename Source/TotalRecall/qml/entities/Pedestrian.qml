@@ -15,6 +15,10 @@ EntityBase {
 //    moveToY.start()
   }
 
+  onPosChanged: {
+//      if(pos.x <= (sprite.width / 2) || pos.x >= (level.))
+  }
+
   function generateRandomValueBetween(minimum, maximum) {
       return Math.random()*(maximum-minimum) + minimum
   }
@@ -23,7 +27,7 @@ EntityBase {
     id:sprite
     translateToCenterAnchor: true
 
-    filename: "../img/Images-hd2.json"
+    filename: "../img/images-hd2.json"
     source: pedSource
   }
 
