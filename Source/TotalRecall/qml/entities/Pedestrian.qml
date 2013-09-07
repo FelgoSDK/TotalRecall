@@ -8,26 +8,23 @@ EntityBase {
 
   property string pedSource: "chicken2-front.png"
 
-  width: sprite.width
-  height: sprite.height
-
-  scale: 0.2
-
   SingleSpriteFromFile {
     id:sprite
-    translateToCenterAnchor: false
+    translateToCenterAnchor: true
 
     filename: "../img/Images-hd2.json"
     source: pedSource
   }
 
   CircleCollider {
-    radius: parent.width /2
-    width: parent.width
-    height: parent.height
-
-    DebugVisual {
-      color: "yellow"
-    }
+    id: collider
+    radius: sprite.width /2
+  }
+  DebugVisual {
+    x: -sprite.width/2
+    y: -sprite.height/2
+    width: sprite.width
+    height: sprite.height
+    color: "blue"
   }
 }

@@ -26,21 +26,13 @@ SceneBase {
     // when it is left at 1, the ball sometimes "float" into the wall or paddles
     velocityIterations: 5
     positionIterations: 5
+    debugDrawVisible: true
   }
 
   Level {
     id: level
     width: parent.width
     height: parent.height
-  }
-
-  Particle {
-    scale: 0.5
-    x: 10
-    y: 10
-    // start when finished loading
-    autoStart: true
-    fileName: "particles/FireBall.json"
   }
 
   Button  {

@@ -9,7 +9,12 @@ Item {
   }
 
   Player {
-    x: 130
-    y: 200
+    x: level.width/2-width/2
+    y: 10+height/2
+  }
+
+  Player {
+    x: level.width/2-width/2
+    y: level.height-10-height/2
   }
 }

@@ -4,8 +4,9 @@ import QtQuick 1.1
 Item {
   id: playerInstance
 
-  width: 50
-  height: 50
+  function moveNow() {
+    character.moveNow()
+  }
 
   PlayerDragger {
     id: playerDragger
