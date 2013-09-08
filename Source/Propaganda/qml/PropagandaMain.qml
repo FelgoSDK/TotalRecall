@@ -10,6 +10,8 @@ GameWindow {
   maximizeable: true
   resizeable: true
 
+  displayFpsEnabled: false
+
   // forward events always to the controller of the loaded scene
   Keys.forwardTo: sceneLoader.item.controllerOfScene
 

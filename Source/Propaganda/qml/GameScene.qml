@@ -4,12 +4,6 @@ import "scripts/levelLogic.js" as LevelLogic
 SceneBase {
   id: scene
 
-  LevelBackground {
-    id: levelBackground
-
-    anchors.centerIn: scene.gameWindowAnchorItem
-    source: "img/bg_ingame-hd2.png"
-  }
 
   // allows collision detection with pyhsics colliders (BoxColliders, CircleColliders and PolygonColliders)
   // it supports 2 modes:
@@ -34,6 +28,7 @@ SceneBase {
 
   Level {
     id: level
+    anchors.centerIn: scene.gameWindowAnchorItem
     width: parent.width
     height: parent.height
   }
@@ -47,21 +42,48 @@ SceneBase {
     }
   }
 
+  property bool gameIsRunning: false
+
   function open() {
     opacity = 1
-
-    LevelLogic.init()
-    level.reset()
     audioManager.playMusic()
+    startGame()
   }
 
   function close() {
     opacity = 0
-    entityManager.removeAllEntities()
     audioManager.stopMusic()
+    stopGame()
+    entityManager.removeAllEntities()
   }
 
   function backPressed() {
     sceneLoader.activateMainMenuScene()
+  }
+
+  function startGame() {
+    gameIsRunning = true
+    LevelLogic.init()
+    level.reset()
+    gameTime.start()
+  }
+
+  function stopGame() {
+    if(!gameIsRunning)
+      return
+
+    gameIsRunning = false
+    gameTime.stop()
+    sceneLoader.activateGameOverScene()
+  }
+
+  Timer {
+    id: gameTime
+    interval: 50
+    repeat: true
+    onTriggered: {
+      level.updateProgress()
+    }
+
   }
 }

@@ -27,13 +27,16 @@ Item {
   GameScene {
     id:gameScene
   }
-
+  GameOverScene {
+    id:gameOverScene
+  }
   /*property string splashScene: "SplashScreenScene.qml"
   property string introScene: "IntroScene.qml"
   property string mainMenuScene: "MainMenuScene.qml"
   property string creditsScene: "CreditsScene.qml"
   property string optionScene: "OptionsScene.qml"
-  property string gameScene: "GameScene.qml"*/
+  property string gameScene: "GameScene.qml"
+  property string gameOverScene: "GameOverScene.qml"*/
 
   property variant source: currentScene ? currentScene : splashScene
   property variant item
@@ -74,6 +77,11 @@ Item {
 
   function activateGameScene() {
     nextScene = gameScene
+    closeScene()
+  }
+
+  function activateGameOverScene() {
+    nextScene = gameOverScene
     closeScene()
   }
 
