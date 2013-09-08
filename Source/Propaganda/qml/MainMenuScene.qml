@@ -10,20 +10,24 @@ SceneBase {
       source: "img/title-hd2.png"
   }
 
-//  GUIWindow {
-//    id: mainMenu
+//  Particle {
+//      id: fireParticle
 
-//    anchors.centerIn: parent
+//      // Particle location properties
+//      x: scene.gameWindowAnchorItem.width/2
+//      y: scene.gameWindowAnchorItem.height+50
+//      rotation: 90
 
-//    width: parent.width/3*2
-//    height: parent.height/3*2
+//      // particle file
+//      fileName: "particles/fire.json"
 
-
-//  }
+//      // start when finished loading
+//      autoStart: true
+//    }
 
   Row {
-    anchors.horizontalCenter: parent.horizontalCenter
-    y: 430
+    x: 30//anchors.horizontalCenter: parent.horizontalCenter
+    y: 440
 
     ImageButton {
       id: play
@@ -59,11 +63,11 @@ SceneBase {
       id: quit
       onClicked: {
         audioManager.play("BUTTON")
-        popupLoader.activateNotification("Test this notification!")
+        sceneLoader.activateOptionsScene()
       }
       text: ""
-      normal: "img/quit-hd2.png"
-      highlight: "img/quit_pressed-hd2.png"
+      normal: "img/options-hd2.png"
+      highlight: "img/options_pressed-hd2.png"
     }
   }
 
@@ -78,12 +82,12 @@ SceneBase {
 
   function open() {
     opacity = 1
-    audioManager.playMusic(true)
+    //audioManager.playMusic(true)
   }
 
   function close() {
     opacity = 0
-    audioManager.stopMusic()
+    //audioManager.stopMusic()
   }
 
   onBackPressed: {

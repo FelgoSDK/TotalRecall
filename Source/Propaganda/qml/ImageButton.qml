@@ -18,8 +18,8 @@ Item {
     signal pressed
     signal released
 
-    width: 100
-    height: 40
+    width: 99
+    height: 31
 
     Image {
         id: image
@@ -53,11 +53,13 @@ Item {
     onPressed: {
 //        if(sound) clip.play();
         console.log("image button pressed");
+      if(highlight)
         image.source = button.highlight;
     }
 
     onReleased: {
         console.log("image button released");
+      if(highlight)
         image.source = button.normal;
     }
 

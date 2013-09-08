@@ -23,6 +23,11 @@ Storage {
 
   onMusicChanged: {
     storage.setValue("music", music)
+    if(music) {
+      audioManager.playMusic(true)
+    } else {
+      audioManager.stopMusic()
+    }
   }
 
   onVibrateChanged: {
@@ -31,6 +36,7 @@ Storage {
 
   onGoToSleepChanged: {
     storage.setValue("goToSleep", goToSleep)
+    nativeUtils.displaySleepEnabled = goToSleep
   }
 
   onBalanceChanged: {

@@ -181,8 +181,28 @@ EntityBase {
         }
       }
     }
-  }
+    onRunningChanged: {
+      if(running) {
 
+      } else {
+
+      }
+    }
+  }
+  //  Particle {
+  //      id: fireParticle
+
+  //      // Particle location properties
+  //      x: scene.gameWindowAnchorItem.width/2
+  //      y: scene.gameWindowAnchorItem.height+50
+  //      rotation: 90
+
+  //      // particle file
+  //      fileName: "particles/fire.json"
+
+  //      // start when finished loading
+  //      autoStart: true
+  //    }
   MovementAnimation {
     id: moveToX
     target: pedestrian

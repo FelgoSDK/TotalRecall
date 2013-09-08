@@ -28,5 +28,18 @@ SceneBase {
     }
   }
 
+  ImageButton {
+    id: play
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 10
+    onClicked: {
+      audioManager.play("BUTTON")
+      sceneLoader.activateMainMenuScene()
+    }
+    text: ""
+    normal: "img/back-hd2.png"
+    highlight: "img/back_pressed-hd2.png"
+  }
 
 }

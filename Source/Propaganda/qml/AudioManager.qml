@@ -31,10 +31,17 @@ Item {
           break
       }
 
+      if(settingsManager.vibrate) {
+        nativeUtils.vibrate()
+      }
+
     clip.play()
   }
 
   function playMusic(title) {
+    if(!settingsManager.music)
+      return
+
     if(title) {
       music.source = "audio/title_music.mp3"
       music.volume = 1

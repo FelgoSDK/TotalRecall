@@ -33,19 +33,20 @@ SceneBase {
     height: parent.height
   }
 
-  Button  {
-    anchors.right: scene.gameWindowAnchorItem.right
-    anchors.top: scene.gameWindowAnchorItem.top
-    text: qsTr("Menu")+translation.language
-    onClicked: {
-      popupLoader.activateIngameMenu()
-    }
-  }
+//  Button  {
+//    anchors.right: scene.gameWindowAnchorItem.right
+//    anchors.top: scene.gameWindowAnchorItem.top
+//    text: qsTr("Menu")+translation.language
+//    onClicked: {
+//      popupLoader.activateIngameMenu()
+//    }
+//  }
 
   property bool gameIsRunning: false
 
   function open() {
     opacity = 1
+    audioManager.stopMusic()
     audioManager.playMusic()
     startGame()
   }
@@ -53,6 +54,7 @@ SceneBase {
   function close() {
     opacity = 0
     audioManager.stopMusic()
+    audioManager.playMusic(true)
     stopGame()
     entityManager.removeAllEntities()
   }

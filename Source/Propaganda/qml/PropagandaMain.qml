@@ -28,6 +28,11 @@ GameWindow {
     source: "fonts/munro.ttf"
   }*/
 
+  // all content is loaded dynamically by the sceneLoader element.
+  SceneLoader {
+    id: sceneLoader
+  }
+
   AudioManager {
     id: audioManager
   }
@@ -36,10 +41,7 @@ GameWindow {
     id: settingsManager
   }
 
-  // all content is loaded dynamically by the sceneLoader element.
-  SceneLoader {
-    id: sceneLoader
-  }
+
 
   // all content is loaded dynamically by the PopupLoader element.
   PopupLoader {
