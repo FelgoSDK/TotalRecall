@@ -29,7 +29,7 @@ Item {
   }
 
   property int progress: 0
-  property int maxprogress: 600
+  property int maxprogress: 300//600
   function updateProgress() {
     progress++
     if(progress >= maxprogress) {

@@ -5,41 +5,55 @@ SceneBase {
   id: optionsScene
 
 
-  LevelBackground {
-      id: levelBackground
-      anchors.centerIn: optionsScene.gameWindowAnchorItem
-      source: "img/about_screen-hd2.png"
+  MultiResolutionImage {
+    id: redWins
+    anchors.centerIn: optionsScene.gameWindowAnchorItem
+    source: "img/end_of_game_red-hd2.png"
+  }
+
+  MultiResolutionImage {
+    id: greenWins
+    anchors.centerIn: optionsScene.gameWindowAnchorItem
+    source: "img/end_of_game_green-hd2.png"
+  }
+
+  MultiResolutionImage {
+    id: drawWins
+    anchors.centerIn: optionsScene.gameWindowAnchorItem
+    source: "img/end_of_game_draw-hd2.png"
   }
 
   function backPressed() {
+    audioManager.playMusic(true)
+    audioManager.play("BUTTON")
     sceneLoader.activateMainMenuScene()
   }
 
+  function open() {
+    drawWins.visible = false
+    redWins.visible = false
+    greenWins.visible = false
 
-  Column {
-    anchors.centerIn: parent
-    Text {
-      text: "Red Army Follower "+settingsManager.balance
-      color: "white"
-    }
-    Text {
-      text: "Green Army Follower "+settingsManager.balance2
-      color: "white"
+    audioManager.play("END")
+    opacity = 1
+    if(settingsManager.balance === settingsManager.balance2) {
+      drawWins.visible = true
+    } else {
+      if(settingsManager.balance > settingsManager.balance2) {
+        redWins.visible = true
+      } else {
+        greenWins.visible = true
+      }
     }
   }
 
-  ImageButton {
-    id: play
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.bottom: parent.bottom
-    anchors.bottomMargin: 10
+  MouseArea {
+    anchors.fill: parent
     onClicked: {
+      audioManager.playMusic(true)
       audioManager.play("BUTTON")
       sceneLoader.activateMainMenuScene()
     }
-    text: ""
-    normal: "img/back-hd2.png"
-    highlight: "img/back_pressed-hd2.png"
   }
 
 }

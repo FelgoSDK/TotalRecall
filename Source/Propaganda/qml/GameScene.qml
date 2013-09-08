@@ -54,13 +54,12 @@ SceneBase {
   function close() {
     opacity = 0
     audioManager.stopMusic()
-    audioManager.playMusic(true)
     stopGame()
     entityManager.removeAllEntities()
   }
 
   function backPressed() {
-    sceneLoader.activateMainMenuScene()
+    //sceneLoader.activateMainMenuScene()
   }
 
   function startGame() {
