@@ -1,0 +1,45 @@
+Title of Game: PROPAGANDA
+-------------------------------------------------------------------------------
+A competitive, action driven one on one political campaigning game in post Soviet Russia.
+
+Presented by The Ministry of Truth
+
+
+Short description:
+-------------------------------------------------------------------------------
+Soviet Russia has just crumbled a couple of days ago. Now it's time to give
+the power back to the people by introducing democracy!
+In this competitive 2 player game, each gamer controlls a politician 
+(red or green party), trying to convince more passengers than the other.
+Gain devoted followers by interaction (standing close to them). It's election
+time and your screen is the battleground!
+After the campaigning is over, the politician with the most followers wins and 
+hence is writing history.
+
+
+Contributors (Secretaries of the State):
+-------------------------------------------------------------------------------
+David Berger - programming
+Niko Harather - programming
+Peter Kainrad - graphics
+Peter Krenn - audio
+
+
+Platform Requirements:
+-------------------------------------------------------------------------------
+
+[x] Android App
+[x] iOS App
+[x] Symbian App
+[x] Blackberry 10 App
+[x] MeeGo
+[x] OS X Executable
+[x] Windows Executable
+[x] Linux Executable
+
+
+Special Hardware Requirements:
+-------------------------------------------------------------------------------
+Two Players with a skilled index finger.
+This is a mobile game, therefore we highly recommend playing it on an average sized tablet.
+The game will be available in the app stores.
