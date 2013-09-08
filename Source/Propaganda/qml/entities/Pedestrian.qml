@@ -156,7 +156,7 @@ EntityBase {
         if(converted < 100) {
           converted = 0
           pedestrian.party = ""
-          audioManager.play("NEVER")
+          //audioManager.play("NEVER")
         }
 
 
@@ -192,7 +192,9 @@ EntityBase {
     onRunningChanged: {
       if(running) {
         flyer.start()
+        pedestrian.scale = 4.0
       } else {
+        pedestrian.scale = 1.0
         flyer.stop()
       }
     }

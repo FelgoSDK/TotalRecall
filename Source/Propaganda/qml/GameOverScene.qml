@@ -34,7 +34,7 @@ SceneBase {
     redWins.visible = false
     greenWins.visible = false
 
-    audioManager.play("END")
+    fanfare.play()
     opacity = 1
     if(settingsManager.balance === settingsManager.balance2) {
       drawWins.visible = true
@@ -50,10 +50,17 @@ SceneBase {
   MouseArea {
     anchors.fill: parent
     onClicked: {
+      fanfare.stop()
       audioManager.playMusic(true)
       audioManager.play("BUTTON")
       sceneLoader.activateMainMenuScene()
     }
+  }
+
+  BackgroundMusic {
+    id: fanfare
+    source: "audio/end_music.mp3"
+    autoPlay: false
   }
 
 }
