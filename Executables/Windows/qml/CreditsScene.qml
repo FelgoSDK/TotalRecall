@@ -2,63 +2,49 @@ import VPlay 1.0
 import QtQuick 1.1
 
 SceneBase {
-  id: optionsScene
+  id: scene
 
+
+  LevelBackground {
+    id: levelBackground
+    anchors.centerIn: scene.gameWindowAnchorItem
+    source: "img/about_screen-hd2.png"
+  }
 
   function backPressed() {
     sceneLoader.activateMainMenuScene()
   }
 
-  GUIWindow {
-    id: mainMenu
 
-    anchors.centerIn: parent
+//  Image {
+//    source: "img/vplay.png"
+//    anchors.horizontalCenter: optionsScene.horizontalCenter
+//    anchors.bottom: optionsScene.bottom
+//    anchors.bottomMargin: 160
+//    // the image size is bigger (for hd2 image), so only a single image no multiresimage can be used
+//    // this scene is not performance sensitive anyway!
+//    fillMode: Image.PreserveAspectFit
+//    height: 55
 
-    width: parent.width/3*2
-    height: parent.height/3*2
+//    MouseArea {
+//      anchors.fill: parent
+//      onClicked: nativeUtils.openUrl("http://v-play.net");
+//    }
+//  }
 
-    Column {
-      id: leftColumn
-      anchors.verticalCenter: parent.verticalCenter
-      x: 5
-      y: 50
-      spacing: 15
-
-      MenuText {
-        text: qsTr("V-Play Team:\nDavid Berger\nNico Harather")+translation.language
-      }
-
-      MenuText {
-        text: qsTr("Team :\nPeter Kainrad \nPeter Krenn")+translation.language
-      }
+  ImageButton {
+    id: play
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 10
+    onClicked: {
+      audioManager.play("BUTTON")
+      sceneLoader.activateMainMenuScene()
     }
-
-
-    Column {
-      id: logoColumn
-      //anchors.top: b1.top
-      //anchors.topMargin: -8
-      anchors.left: leftColumn.right
-      anchors.leftMargin: 30
-      anchors.verticalCenter: parent.verticalCenter
-      spacing: 8
-
-      MenuText {
-        text: qsTr("Proudly developed with")+translation.language
-      }
-
-      Image {
-        source: "img/vplay.png"
-        // the image size is bigger (for hd2 image), so only a single image no multiresimage can be used
-        // this scene is not performance sensitive anyway!
-        fillMode: Image.PreserveAspectFit
-        height: 55
-
-        MouseArea {
-          anchors.fill: parent
-          onClicked: nativeUtils.openUrl("http://v-play.net");
-        }
-      }
-    }
+    text: ""
+    normal: "img/back-hd2.png"
+    highlight: "img/back_pressed-hd2.png"
   }
+
+
 }

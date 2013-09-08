@@ -6,10 +6,15 @@ SceneBase {
 
 
   Item {
-    anchors.centerIn: parent
+    anchors.centerIn: scene.gameWindowAnchorItem
     opacity: 0.0
 
-    Text {
+    LevelBackground {
+      id: levelBackground
+      anchors.centerIn: parent
+      source: "img/splash_screen-hd2.png"
+    }
+    /*Text {
       id: seText
       anchors.centerIn: parent
       text: qsTr("Propaganda")+translation.language
@@ -22,24 +27,24 @@ SceneBase {
       anchors.horizontalCenter: seText.horizontalCenter
       text: qsTr("-- Total Recall AEC --")+translation.language
       color: "white"
-    }
+    }*/
     NumberAnimation on opacity {
       id: fadeInAnimation
       running: false
-      duration: 2000
+      duration: 500
       to: 1.0
     }
-    NumberAnimation on opacity {
-      id: fadeOutAnimation
-      running: false
-      duration: 2000
-      to: 0.0
-    }
+//    NumberAnimation on opacity {
+//      id: fadeOutAnimation
+//      running: false
+//      duration: 500
+//      to: 0.0
+//    }
   }
 
   Timer {
     id: changeToNextSceneTimer
-    interval: 5000
+    interval: 3000
     onTriggered: {
       sceneLoader.activateMainMenuScene()
     }
@@ -47,15 +52,16 @@ SceneBase {
 
   Timer {
     id: fadeOutTimer
-    interval: 3000
+    interval: 1500
     onTriggered: {
-      fadeOutAnimation.start()
+      //fadeOutAnimation.start()
     }
   }
 
   Component.onCompleted: {
+    audioManager.playMusic(true)
     fadeInAnimation.start()
-    fadeOutTimer.start()
+    //fadeOutTimer.start()
     changeToNextSceneTimer.start()
   }
 
@@ -63,7 +69,7 @@ SceneBase {
     anchors.fill: parent
     onPressAndHold: {
       changeToNextSceneTimer.stop()
-      fadeOutTimer.stop()
+      //fadeOutTimer.stop()
       sceneLoader.activateMainMenuScene()
     }
   }

@@ -7,8 +7,8 @@ GameWindow {
   height: 480*2
 
   minimizeable: true
-  maximizeable: true
-  resizeable: true
+  //maximizeable: true
+  //resizeable: true
 
   displayFpsEnabled: false
 

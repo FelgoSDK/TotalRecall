@@ -5,23 +5,56 @@ import "entities"
 Item {
   id: level
 
+  Rectangle {
+    anchors.fill: parent
+    color: "#263357"
+  }
+
+  Rectangle {
+    x: 106
+    y: 160
+    width: 110/maxprogress*progress
+    height: 80
+  }
+
+  LevelBackground {
+    id: levelBackground
+
+    anchors.centerIn: level
+    source: "img/bg_ingame-hd2.png"
+  }
+
   SpriteBatchContainer {
     id: spriteBatchContainer
   }
 
+  property int progress: 0
+  property int maxprogress: 600
+  function updateProgress() {
+    progress++
+    if(progress >= maxprogress) {
+      progress = 0
+      scene.stopGame()
+    }
+  }
+
   function reset() {
 
-      playerDragger.x= level.width/2-playerDragger.width/2
-      playerDragger.y= 10+50
+    playerDragger.x= level.width/2-playerDragger.width/2
+    playerDragger.y= 10+50
 
-      character.x= level.width/2-playerDragger.width/2
-      character.y= 10+50
+    character.x= level.width/2-playerDragger.width/2
+    character.y= 10+50
 
-      playerDragger2.x= level.width/2-playerDragger.width/2
-      playerDragger2.y= level.height-10-50
+    playerDragger2.x= level.width/2-playerDragger.width/2
+    playerDragger2.y= level.height-10-50
 
-      character2.x= level.width/2-playerDragger.width/2
-      character2.y= level.height-10-50
+    character2.x= level.width/2-playerDragger.width/2
+    character2.y= level.height-10-50
+
+    progress = 0
+    settingsManager.balance = 0
+    settingsManager.balance2 = 0
   }
 
   PlayerDragger {

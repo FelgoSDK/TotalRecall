@@ -9,6 +9,7 @@ Storage {
   property bool vibrate: true
   property bool goToSleep: false
   property int balance: 0
+  property int balance2: 0
   property bool debugVisualsEnabled: false
 
   property int borderRegionColliderGroup: Box.Category1
@@ -22,6 +23,11 @@ Storage {
 
   onMusicChanged: {
     storage.setValue("music", music)
+    if(music) {
+      audioManager.playMusic(true)
+    } else {
+      audioManager.stopMusic()
+    }
   }
 
   onVibrateChanged: {
@@ -30,11 +36,16 @@ Storage {
 
   onGoToSleepChanged: {
     storage.setValue("goToSleep", goToSleep)
+    nativeUtils.displaySleepEnabled = goToSleep
   }
 
   onBalanceChanged: {
     storage.setValue("balance", balance)
   }
+  onBalance2Changed: {
+    storage.setValue("balance2", balance2)
+  }
+
 
   onDebugVisualsEnabledChanged: {
     storage.setValue("debugVisualsEnabled", debugVisualsEnabled)
@@ -59,7 +70,8 @@ Storage {
       storage.setValue("sound", true)
       storage.setValue("music", true)
       storage.setValue("vibrate", true)
-      storage.setValue("balance", 10000)
+      storage.setValue("balance", 0)
+      storage.setValue("balance2", 0)
       storage.setValue("gotosleep", false)
       storage.setValue("debugVisualsEnabled", false)
     } else if(firstStartIndicator === true) {
@@ -78,6 +90,7 @@ Storage {
     music = storage.getValue("music")
     vibrate = storage.getValue("vibrate")
     balance = storage.getValue("balance")
+    balance2 = storage.getValue("balance2")
     goToSleep = storage.getValue("gotosleep")
     debugVisualsEnabled = storage.getValue("debugVisualsEnabled")
     if(goToSleep) {

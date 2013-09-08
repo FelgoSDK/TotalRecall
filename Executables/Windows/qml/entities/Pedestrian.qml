@@ -122,21 +122,25 @@ EntityBase {
       var collidedEntityType = collidedEntity.entityType;
       if(collidedEntityType === "player") {
 
-        convert.interval = 16
+        if(!convert.running) {
+          convert.interval = 16
 
-        if(pedestrian.party !== "" && pedestrian.party !==collidedEntity.entityId) {
-          convert.interval = 32
-          converted = 0
-          convertedBar.visible = true
-          pedestrian.imageParty = ""
-        }
-        convert.start()
+          if(pedestrian.party !== "" && pedestrian.party !==collidedEntity.entityId) {
+            convert.interval = 32
+            converted = 0
+            convertedBar.visible = true
+            pedestrian.imageParty = ""
+          }
+          convert.start()
 
 
-        if(collidedEntity.entityId === "r") {
-          pedestrian.party = "r"
-        } else if(collidedEntity.entityId === "g") {
-          pedestrian.party = "g"
+          if(collidedEntity.entityId === "r") {
+            pedestrian.party = "r"
+          } else if(collidedEntity.entityId === "g") {
+            pedestrian.party = "g"
+          }
+        } else {
+          audioManager.play("NEVER")
         }
       }
     }
@@ -152,6 +156,7 @@ EntityBase {
         if(converted < 100) {
           converted = 0
           pedestrian.party = ""
+          //audioManager.play("NEVER")
         }
 
 
@@ -166,13 +171,48 @@ EntityBase {
     onTriggered: {
       converted++
       if(converted >= 100) {
+
         convert.stop()
         convertedBar.visible = false
         pedestrian.imageParty = pedestrian.party
+        // increase value
+        if(pedestrian.party === "r") {
+          audioManager.play("DRUG")
+          settingsManager.balance = settingsManager.balance+1
+        } else if(pedestrian.party === "g") {
+          var propability = Math.random()
+          if(propability<0.5)
+            audioManager.play("URA_D")
+          else
+            audioManager.play("URA_G")
+          settingsManager.balance2 = settingsManager.balance2+1
+        }
+      }
+    }
+    onRunningChanged: {
+      if(running) {
+        flyer.start()
+        pedestrian.scale = 4.0
+      } else {
+        pedestrian.scale = 1.0
+        flyer.stop()
       }
     }
   }
+  Particle {
+    id: flyer
 
+    x: sprite.x+sprite.width/2
+    y: sprite.y+sprite.height/2
+
+    // particle file
+    fileName: "../particles/BoingStar.json"
+
+    // start when finished loading
+    autoStart: false
+    scale: 0.2
+    duration: 0.3
+  }
   MovementAnimation {
     id: moveToX
     target: pedestrian

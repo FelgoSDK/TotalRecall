@@ -7,8 +7,10 @@ GameWindow {
   height: 480*2
 
   minimizeable: true
-  maximizeable: true
-  resizeable: true
+  //maximizeable: true
+  //resizeable: true
+
+  displayFpsEnabled: false
 
   // forward events always to the controller of the loaded scene
   Keys.forwardTo: sceneLoader.item.controllerOfScene
@@ -26,6 +28,11 @@ GameWindow {
     source: "fonts/munro.ttf"
   }*/
 
+  // all content is loaded dynamically by the sceneLoader element.
+  SceneLoader {
+    id: sceneLoader
+  }
+
   AudioManager {
     id: audioManager
   }
@@ -34,10 +41,7 @@ GameWindow {
     id: settingsManager
   }
 
-  // all content is loaded dynamically by the sceneLoader element.
-  SceneLoader {
-    id: sceneLoader
-  }
+
 
   // all content is loaded dynamically by the PopupLoader element.
   PopupLoader {
