@@ -9,6 +9,7 @@ Item {
   property string idURAG: "URA_G"
   property string idDRUG: "DRUG"
   property string idNEVER: "NEVER"
+  property string idEND: "END"
   function play(clipID) {
     if(!settingsManager.sound)
       return
@@ -29,6 +30,9 @@ Item {
         case idNEVER:
           clip.source = "audio/never.wav"
           break
+        case idEND:
+          clip.source = "audio/end_music.mp3"
+          break
       }
 
       if(settingsManager.vibrate) {
@@ -43,11 +47,11 @@ Item {
       return
 
     if(title) {
-      music.source = "audio/title_music.mp3"
+      music.source = "audio/title_music.wav"
       music.volume = 1
     }
     else {
-      music.source = "audio/crowd.mp3"
+      music.source = "audio/crowd.wav"
       music.volume = 0.2
     }
 
