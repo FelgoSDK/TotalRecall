@@ -20,7 +20,7 @@ hence is writing history.
 Contributors (Secretaries of the State):
 -------------------------------------------------------------------------------
 David Berger - programming
-Niko Harather - programming
+Nico Harather - programming
 Peter Kainrad - graphics
 Peter Krenn - audio
 
