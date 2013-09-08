@@ -9,16 +9,16 @@ customFolder.source = qml
 DEPLOYMENTFOLDERS += customFolder
 
 # Add Icon
-#win32 {
-#    # Icon Resource for exe file
-#    RC_FILE += win/app_icon.rc
-#    # Icon Resource for dynamic icon of title bar and task bar
-#    # If using MSVC the code may end up in "release" or "debug" sub dir
-#    CONFIG(debug, debug|release): OUTDIR = debug
-#    else: OUTDIR = release
-#    # copy the icon file to the exe folder
-#    QMAKE_POST_LINK += copy /y \"$$PWD\"\\win\\app_icon.ico \"$$OUT_PWD/$$OUTDIRs\"
-#}
+win32 {
+    # Icon Resource for exe file
+    RC_FILE += win/app_icon.rc
+    # Icon Resource for dynamic icon of title bar and task bar
+    # If using MSVC the code may end up in "release" or "debug" sub dir
+    CONFIG(debug, debug|release): OUTDIR = debug
+    else: OUTDIR = release
+    # copy the icon file to the exe folder
+    QMAKE_POST_LINK += copy /y \"$$PWD\"\\win\\app_icon.ico \"$$OUT_PWD/$$OUTDIRs\"
+}
 
 # Add sources
 SOURCES += main.cpp
