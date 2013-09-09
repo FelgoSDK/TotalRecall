@@ -37,6 +37,9 @@ Platform Requirements:
 [x] Windows Executable
 [x] Linux Executable
 
+Available directly after jam: Windows Installer 
+Other platforms will be available in according stores after the jam
+
 
 Special Hardware Requirements:
 -------------------------------------------------------------------------------
