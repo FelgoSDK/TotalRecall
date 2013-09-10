@@ -3,12 +3,10 @@ import VPlay 1.0
 
 GameWindow {
   id: window
-  width: 320*2
-  height: 480*2
+  width: 320
+  height: 480
 
   minimizeable: true
-  //maximizeable: true
-  //resizeable: true
 
   displayFpsEnabled: false
 
