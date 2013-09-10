@@ -114,7 +114,7 @@ EntityBase {
     allowSteerForward: false
 
     // if this is set and the target is more than 90 away, allow to move backwards, default is false
-    allowSteerBackward: false
+    //allowSteerBackward: false
 
 
     // if this is set, the follower would only rotate and not move backwards when the target is more than 90 degrees away, default is false
