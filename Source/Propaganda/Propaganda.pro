@@ -1,5 +1,5 @@
 # V-Play project
-CONFIG += v-play_daily
+CONFIG += v-play
 
 # temp until next daily build
 QT+=network
@@ -67,8 +67,8 @@ symbian {
 # Following configs are needed for Mac App Store publishing
 macx {
     COMPANY = "V-Play GmbH"
-    BUNDLEID = net.vplay.demos.mac.Propaganda
+    BUNDLEID = net.vplay.builds.mac.Propaganda
     ICON = macx/app_icon.icns
-    QMAKE_INFO_PLIST = macx/game-Info.plist
+    QMAKE_INFO_PLIST = macx/game.plist
     ENTITLEMENTS = macx/game.entitlements
 }

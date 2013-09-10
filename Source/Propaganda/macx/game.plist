@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>app_icon</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.vplay.demos.mac.Propaganda</string>
+	<string>net.vplay.builds.mac.Propaganda</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
